@@ -1,0 +1,109 @@
+Capa - Titulo da palestra 
+Sobre mim - Nerd geek ...................... Crazy and Lazy
+
+Agenda
+
+War stories -> 
+
+Prevent Surprises - Increase Knoweledge, Gain Visibility, Find Repeatability
+
+
+
+12 - Factor application
+Codebase — One codebase tracked in revision control, many deploys
+Dependencies — Explicitly declare and isolate dependencies
+Config — Store config in the environment
+Backing Services — Treat backing services as attached resources
+Processes — Execute the app as one or more stateless processes
+Disposability — Maximize robustness with fast startup and graceful shutdown
+Dev/prod parity — Keep development, staging, and production as similar as possible
+Logs — Treat logs as event streams
+
+
+Tips -> 
+
+Codebase
+Git branching strategies - 4 models
+git no-ff 
+Pull Requests
+
+Dependency Management
+npm breakdown
+SemVer
+$(npm bin) trick
+
+Containirization
+Why?
+How?
+
+
+NPM - Tips & Tricks
+Internal Registry - http://qz.com/646467/how-one-programmer-broke-the-internet-by-deleting-a-tiny-piece-of-code/ / Artifactory/Nexus/Npm 
+Hook Scripts - 
+Bundle dependencies / Shrinkwrap
+npm prune 
+
+
+
+Continuous Integration
+Rundeck
+http://job-dsl.herokuapp.com/
+AWS CodePipeline
+https://github.com/jenkinsci/job-dsl-plugin/wiki/Tutorial---Using-the-Jenkins-Job-DSL
+http://www.spinnaker.io/
+
+
+
+Process Management
+Concepts
+http://pm2.keymetrics.io/
+
+Serving static files
+https://github.com/koajs/compress
+https://github.com/expressjs/compression
+https://github.com/hapijs/inert
+Nginx - http://blog.argteam.com/coding/hardening-node-js-for-production-part-2-using-nginx-to-avoid-node-js-load/
+
+SSL
+https://letsencrypt.org/
+
+
+Infrastructure Imutabillity
+Phoenix model -> cats vs pets
+
+Scaling out 
+Container scheduling
+AWS - ASGs
+
+
+Unikernels -> boxfuse
+
+tc-security-groups-ecomqc-11014-3cServicesSecurityGroup-1KUVJD76BH6AO - sg-403a263b
+Info
+https://books.google.com.br/books?id=Gu09CgAAQBAJ&pg=PA223&lpg=PA223&dq=delivery+nodejs&source=bl&ots=lit01UTqp9&sig=eeCJRsCGW_4Pn7pCg9yiEOPg5f4&hl=pt-BR&sa=X&ved=0ahUKEwil2qvlq6DOAhVFkJAKHZPSCKM4ChDoAQhbMAU#v=onepage&q=delivery%20nodejs&f=false
+
+https://www.sitepoint.com/12-factor-apps-methodology-implement-apps-appfog/
+
+DbaSS
+
+
+Smoke Tests
+sg-0f3a2674, sg-403a263b
+
+
+Slide format stuff
+
+http://lightning.fm/massofplanets/#/
+http://slides.com/gsklee/functional-programming-in-5-minutes#/29
+http://rollingstones.vizzuality.com/#/6
+http://anandmanisankar.com/posts/docker-container-nginx-node-redis-example/
+
+
+http://sysadvent.blogspot.com.br/2014/12/day-1-docker-in-production-reality-not.html
+https://github.com/docker/docker-bench-security
+https://github.com/veggiemonk/awesome-docker
+https://github.com/donnemartin/awesome-aws
+https://boxfuse.com/
+https://www.youtube.com/watch?v=7CZFpHUPqXw
+https://github.com/TomasTomecek/sen
+https://docs.docker.com/engine/admin/ambassador_pattern_linking/
