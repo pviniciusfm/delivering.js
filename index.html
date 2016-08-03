@@ -29,14 +29,566 @@
 					<h2 style="color: #eee"><b style="color: #eee">It's time to launch!</b></h2>
 					<p style="color: #eee">Saiba como entregar a sua aplicação NodeJS para produção</p>
 				</section>
-				<section><h2>Então você é um desenvolvedor NodeJS?</h2></section>
+				<section><h2>Então você é um desenvolvedor <b>NodeJS?</b></h2></section>
 				<section><img src="http://i680.photobucket.com/albums/vv164/yellowbison/fuckyeah.png"></section>
-				<section><h2>Sinistro?</h2></section>
+				<section><h2>Sinistro? <b>Cabuloso?</b></h2></section>
 				<section><img src="http://i680.photobucket.com/albums/vv164/yellowbison/fuckyeah.png"></section>
-				<section><h2>Cabuloso?</h2></section>
-				<section><img src="http://i680.photobucket.com/albums/vv164/yellowbison/fuckyeah.png"></section>
-				<section><h2>E não sabe fazer o deploy de sua aplicação?</h2></section>
-				<section data-background="http://www.webaccessibile.org/wp-content/uploads/2016/03/fear-cropped-proto-custom_28.jpg"></section>
+				<section><h2>Mas na hora de <b>entregar</b> sua aplicação...</h2></section>
+				<section data-background="img/rocket-fail.gif"></section>
+				<section>
+					<h2>Iremos analizar a entrega de uma aplicação <b>NodeJS.</b></h2>
+					<p class="fragment"><i>Práticas</i></p>
+					<p class="fragment"><i>Ferramentas</i></p>
+					<p class="fragment"><i>Soluções</i></p>
+				</section>
+				<section>
+					<h2><b>Evitar surpresas</b></h2>
+					<img class="fragment" src="http://i.imgur.com/S7tQ1Y6.gif" width="600" height="400">
+				</section>
+				<!-- Quem sou -->
+				<section>
+					<section>
+						<h2><b>Quem sou eu?</b></h2><br>
+						<img src="img/pv.jpg">
+						<p class="fragment">pviniciusfm@gmail.com</p>
+					</section>
+					<section>
+						<p>Consultor de Desenvolvimento na Avenue Code</p>
+						<p class="fragment">Google Developer Bus & Hackathons</p>
+						<p class="fragment">Tomador de cerveja profissional</p>
+						<h3 class="fragment"><b>DOIDO!</b></h3>
+					</section>
+					<section data-background="https://media.giphy.com/media/cMV9akgudJiRW/giphy.gif">
+				</section>
+				<!-- Fim Quem sou -->
+				</section>
+				<section>
+					<h2><b>Agenda</b></h2>
+					<ol class="fragment">
+						<li class="fragment">Histórias de guerra</li>
+						<li class="fragment">Automatize TUDO!</li>
+						<li class="fragment">Automatizando - Camada Aplicação</li>
+						<li class="fragment">Automatizando - Camada Infraestrutura</li>
+						<li class="fragment">Unindo as camadas com Containers</li>
+						<li class="fragment">Monitoramento</li>
+						<li class="fragment">Dicas e Ferramentas</li>
+						<li class="fragment">Links</li>
+					</ol>
+				</section>
+				<section>
+					<section>
+						<h2>Histórias de <b>Guerra</b></h2>
+					</section>
+					<section data-background="https://media.giphy.com/media/3osxY5sxnOK8X4pv1K/giphy.gif">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Automatize <b>TUDO!</b></h2>
+						<ol>
+							<li class="fragment">Ganhe visibilidade</li>
+							<li class="fragment">Aumente o conhecimento</li>
+							<li class="fragment">Ganhe repetitibilidade</li>
+						</ol>
+					</section>
+					<section>
+						<h2>Primeiro... Dissecando uma aplicação <b>NodeJS</b></h2>
+					</section>
+					<section id="anatomy" data-background="img/nodejs-anatomy.png" data-background-size="contain">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Automatizando a camada da <b>Aplicação</b></h2>
+					</section>
+					<section>
+						<h2>Entrega <b>básica</b></h2>
+						<ol>
+							<li class="fragment">Infraestrutura manualmente configurada</li>
+							<li class="fragment">git clone --branch <b>v1.0</b> http://github.com/meuprojeto/cabuloso.git</li>
+							<li class="fragment">npm install --production</li>
+							<li class="fragment">gulp/grunt build</li>
+							<li class="fragment">npm start</li>
+						</ol>
+					</section>
+					<section>
+						<h2><b>Problemas</b> ???</h2>
+					</section>
+					<section>
+						<h2>Infraestrutura <b>manualmente</b> configurada.</h2>
+						<p class="fragment">Escalabilidade limitada</p>
+						<p class="fragment">Dificuldade de adicionar novas ferramentas e patchs</p>
+						<p class="fragment">Conhecimento centralizado</p>
+						<p class="fragment">Diferenças bruscas entre ambientes</p>
+					</section>
+					<section>
+						<h2>git clone --branch. Tem seus problemas :</h2>
+						<p class="fragment">Você terá que orchestrar os próximos updates.</p>
+					</section>
+					<section>
+						<h2>npm <b>install</b> &lt;local&gt;</h2>
+						<br>
+						<ul>
+							<li class="fragment">Requer Internet.</li>
+							<li class="fragment">Lento.</li>
+							<li class="fragment">Suscetível as definições de versão no package.json.</li>
+							<li class="fragment">Velocidade de deploy varia com a velocidade de conexão.</li>
+							<li class="fragment">Irá rodar todos os seus npm hooks e os de suas dependências.</li>
+							<li class="fragment">Pode estar repetindo esse passo muitas vezes em seu processo de entrega.</li>
+						<aside class="notes">
+        			Recentemente ouve um problema muito interessante ocasionado por um desenvolvedor 
+        			não satisfeito com uma decisão da empresa.
+    				</aside>
+						</ul>
+					</section>
+					<section>
+						<h2><b>gulp/grunt</b> build</h2>
+						<p class="fragment">Mais dependências</p>
+						<p class="fragment">NODE_ENV=development</p>
+						<p class="fragment">Talvez você não precise deles</p>
+					</section>
+					<section>
+						<h2>Melhorando um pouco o cenário anterior</h2>						
+					</section>
+					<section>
+						<p>Utilizar um registry privado. <a href="http://www.sonatype.com/download-oss-sonatype">Nexus</a>,<a href="">Artifactory </a><a href="">Sinopia</a></p>
+						<p class="fragment">Use npm shrinkwrap</p>
+						<p class="fragment">Empacote também seus node_modules</p>
+						<ol>
+							<li class="fragment">Bundle Dependencies</li>
+							<li class="fragment">Tarball, ZIP</li>
+						</ol>
+						<p class="fragment">Use npm hooks. prepublish, postinstall</p>
+						<p class="fragment">Use npm scripts se seu build for simples. "npm run" ao invez de gulp/grunt</p>
+					</section>
+					<section>
+						<h2><b>PAUSA!!</b></h2>
+						<h3>Você não vai conseguir mudar o mundo de uma vez!</h3><br>
+						<p class="fragment">O fundamento agile também funciona para automatização</p>
+						<p class="fragment">Proponha atualizações graduais e significativas.</p>
+					</section>
+					<section>
+						<h2>Integração contínua</h2>
+					</section>
+					<section>
+						<h2>Encontre a <b>paz</b> utilizando uma pipeline eficiente</h2><br>
+						<ol>
+							<li class="fragment">Build and Package</li>
+							<li class="fragment">Unit testing</li>
+							<li class="fragment">Static code analysis</li>
+							<li class="fragment">Deploy to dev / Smoke Tests</li>
+							<li class="fragment">Deploy to qa / Smoke Tests</li>
+							<li class="fragment">UAT</li>
+							<li class="fragment">Deploy to production / Smoke Tests</li>
+						</ol>
+					</section>
+					<section data-background="https://www.cloudbees.com/sites/default/files/jenkins2-harpreet-blog2-3.png" data-background-size="contain">
+					</section>
+					<section>
+						<h2><b>Pipeline e build scripts</b> devem ser versionados também.</h2>
+					</section>
+					<section>
+						<h2>Travis</h2><br>
+						<p class="fragment">.travis.yml</p>
+						<p class="fragment"><b>ok</b></p>
+					</section>
+					<section>
+						<h2>CircleCI</h2><br>
+						<p class="fragment">circle.yml</p>
+						<p class="fragment"><b>ok</b></p>
+					</section>
+					<section><h2>Jenkins?????</h2></section>
+					<section data-background="https://m.popkey.co/cedcc1/eLw7m.gif" data-background-size="contain" data-b>
+					</section>
+					<section>
+						<h2>Jenkins Pipeline Plugin</h2>
+						<p class="fragment">JenkinsFile</p>
+						<pre class="fragment">
+							<code>
+serverUrl = 'exemplo'
+
+def servers
+
+stage 'Build'
+node {
+    git url: 'https://github.com/gshipley/nodejs-example.git'
+    sh 'npm install'
+}
+
+stage 'Unit Tests & Static Code Analysis'
+parallel(unitTests: {
+    sh 'npm test'
+}, staticAnalysis: {
+    sh 'npm run static-analysis'
+})
+
+stage 'Integration Tests'
+sh 'npm run int-tests'
+
+stage name: 'Deploy QA', concurrency: 1
+servers.rundeck('DeployQA', '$BUILD_NUMBER')
+
+input message: "Implantar em produção?"
+stage name: 'Deploy Production', concurrency: 1
+servers.rundeck('DeployProduction', '$BUILD_NUMBER')
+
+def rundeck(jobName, buildNumber){
+  rundeck = new Rundeck('https://pmachado.com.br:8443')
+  rundeck.run(jobName, buildNumber)
+}
+
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Demo</h2>
+					</section>
+				</section>				
+				<section>
+					<section>
+						<h2>Automatizando a camada da <b>Infraestrutura</b></h2>
+					</section>
+					<section>
+						<h2>Configuration <b>Management</b></h2>
+						<ul>
+							<li class="fragment">Chef
+								<ul>
+									<li><a href="https://supermarket.chef.io/">Supermarket</a></li>
+									<li><a href="https://supermarket.chef.io/cookbooks/nodejs">cookbooks/nodejs</a></li>
+									<li><a href="https://github.com/redguide/nodejs">redguide/nodejs</a></li>
+								</ul>
+							</li>
+							<li class="fragment">Ansible</li>
+							<li class="fragment">Puppet</li>
+							<li class="fragment">Bash</li>
+							<li class="fragment">NodeJS, Python Script</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Infraestrutura Imutável</h2>
+						<ul>
+							<li class="fragment">Dependency Management(berkshelf)</li>
+							<li class="fragment">Unit Tests(rspec, chefspec)</li>
+							<li class="fragment">Coverage(rspec)</li>
+							<li class="fragment">Static Code Analysis(rubocop, foodcritic)</li>
+							<li class="fragment">Integration Tests(kitchenci)</li>
+							<li class="fragment">Deploy(chef-solo)</li>
+							<li class="fragment">Generate Image(packer)</li>
+						</ul>
+					</section>
+					<section>
+						<h2>AWS Cloudformation</h2>
+						<ol>
+							<li>JSON Sucks</li>
+							<li>Use Troposphere</li>
+						</ol>
+					</section>
+					<section>
+						<h2>Você deve tratar sua infraestrutura como gado</h2>
+						<img src="http://www.pxleyes.com/images/contests/fear%20factor/fullsize/fear%20factor_4ae6c86b47d4e_hires.jpg" width="300">
+					</section>
+					<section>
+						<h2>E não como filhotes.</h2>
+						<img src="https://s-media-cache-ak0.pinimg.com/736x/6c/8c/af/6c8caf223d646cf36cbf110b544b3f2d.jpg" width="300">
+					</section>
+				</section>
+				<section>				
+					<section>
+						<h2>Unindo as camadas com <b>Containers</b></h2>
+					</section>
+					<section data-background="img/nodejs-anatomy.png" data-background-size="contain">
+					</section>
+					<section>
+						<h2>Soluções</h2>
+						<ul>
+							<li class="fragment">Docker</li>
+							<li class="fragment">Rkt</li>
+							<li class="fragment">OpenVZ</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Docker</h2>
+						<ul>
+							<li class="fragment">Image Layering</li>
+							<li class="fragment">Dockerfile</li>
+							<li class="fragment">Repository</li>
+							<li class="fragment">Network</li>
+							<li class="fragment">Log</li>
+							<li class="fragment">Docker Compose</li>
+							<li class="fragment">Docker link</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Deploy com docker</h2>
+					</section>
+					<section>
+						<h2>Contruir Imagem</h2>
+						<p class="fragment">Dockerfile</p>
+						<pre>
+							<code class="fragment">
+FROM repo.paulo.com/base-nodejs:4.4.5
+
+WORKDIR /cabuloso
+COPY src/ ./
+COPY index.js ./
+
+RUN npm install (--production)
+RUN npm build
+
+RUN npm prune (--production)
+
+COPY cabuloso.json ./
+COPY overrides.sh ./
+
+EXPOSE 8080
+EXPOSE 8433
+
+ENTRYPOINT /overrides.sh && pm2 start /cabuloso/cabuloso.json --no-daemon
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Docker Build</h2>
+						<pre>
+							<code>
+#!/usr/bin/env bash
+
+REPO="repo.paulo.com"
+CABULOSO_IMG="${REPO}/cabuloso"
+REDIS_IMG="${REPO}/cabuloso-redis"
+
+if [[ -z ${CI} ]]; then
+  TAG="dev"
+else
+  TAG="$(jq -r .version package.json)"
+fi
+
+if [[ "${CIRCLE_BRANCH}" == "master" ]]; then  
+  docker build -t "${REDIS_IMG}:${TAG}" -t "${REDIS_IMG}:latest" -f ./cabuloso-redis.Dockerfile ./
+  docker build -t "${CABULOSO_IMG}:${TAG}" -t "${CABULOSO_IMG}:latest" ./  
+else
+  docker build -t "${REDIS_IMG}:${TAG}" -f ./cabuloso-redis.Dockerfile ./
+  docker build -t "${CABULOSO_IMG}:${TAG}" ./  
+fi
+
+docker push "${REPO}/cabuloso-redis"
+docker push "${REPO}/cabuloso"
+
+echo "Generated docker image: repo.fanaticslabs.com/cabuloso:${TAG}"
+
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h2>Now the deployment script</h2>
+						<pre>
+							<code class="fragment">
+#!/bin/bash
+
+set +e
+source "/etc/deploy/env"
+
+docker rm "cabuloso"
+DOCKER_IMAGE="repo.paulo.com/cabuloso:current"
+
+set -ex
+
+docker run \
+  -dp 8080:8080 \
+  --name "cabuloso" \
+  --env-file "/etc/deploy/env" \
+  --restart=always \
+  ${DOCKER_IMAGE}
+
+							</code>
+						</pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Monitoramento</h2>
+					</section>
+					<section>
+						<h2>Logging</h2>
+					</section>
+					<section>
+						<h2>Console.log <b>não</b> é log</h2>
+						<p class="fragment">Assim como cachorro quente não é um cachorro de fato</p>
+						<img class="fragment" src="http://2.bp.blogspot.com/-24D2dkMZ7XM/TaRNU7U2VVI/AAAAAAAAAI8/Q1jDEM88fTw/s1600/salsicha.jpg">
+					</section>
+					<section>
+						<ul>
+							<li>Winston</li>
+							<li>Pico</li>
+							<li>Bunnyan</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Use logs não somente para "debugar" suas aplicações</h2>
+						<ul>
+							<li>Extraia informações de utilização</li>
+							<li>Extraia informações de performance</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Log Management</h2>
+						<ul>
+							<li>ELK</li>
+							<li>Splunk</li>
+							<li>Graylog</li>
+						</ul>
+					</section>
+					<section><h2>Alarmes</h2></section>
+					<section><h2>Resoluções de Incidente</h2></section>
+					<section data-background="https://www.pagerduty.com/wp-content/uploads/2015/12/how-it-works-it-ops-1.png" data-background-size="contain"></section>
+				</section>
+				<section>
+					<section>
+						<h2>Dicas e Ferramentas</h2>
+					</section>
+					<section>
+						<h2>Codebase</h2>
+						<ol>
+							<li>Branching Strategies
+								<ol>
+									<li>Centralizado</li>
+									<li>Git Flow</li>
+									<li>Github Flow</li>
+									<li>Forking Flow</li>
+								</ol>
+							</li>
+							<li>git no-ff</li>
+							<li>git --force-with-lease</li>
+							<li>Pull Requests</li>
+						</ol>
+					</section>
+					<section>
+						<h2>NPM</h2>
+						<ol>
+							<li class="fragment">SEM VER</li>
+							<li class="fragment">Scripts</li>
+							<li class="fragment">Dev Dependencies / Dependencies</li>
+							<li class="fragment">Main entry</li>
+							<li class="fragment">Shrinkwrap</li>
+							<li class="fragment">Other Info</li>
+							<li class="fragment">$(npm bin)</li>
+							<li class="fragment">Npm 3</li>
+						</ol>
+					</section>
+					<section>
+						<h2>Process Management</h2>
+						<ul>
+							<li class="fragment"><a href="http://pm2.keymetrics.io/">PM2</a></li>
+							<li class="fragment">Forever</li>
+							<li class="fragment">SystemD, Upstart, Runit</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Static Files</h2>
+						<ul>
+							<li class="fragment">CDN - Akamai, Amazon Cloudfront</li>
+							<li class="fragment"><a href="http://blog.argteam.com/coding/hardening-node-js-for-production-part-2-using-nginx-to-avoid-node-js-load/">NginX</a></li>
+							<li class="fragment">
+								<a href="https://github.com/koajs/compress">koajs/compress</a>
+								<a href="https://github.com/koajs/static">koajs/static</a>
+							</li>
+							<li class="fragment">
+								<a href="https://github.com/expressjs/compression">expressjs/compression</a>
+								<a href="http://blog.modulus.io/nodejs-and-express-static-content">express.stati</a>
+							</li>
+							<li class="fragment"><a href="https://github.com/hapijs/inert">hapijs/inert</a></li>
+						</ul>
+					</section>
+					<section>
+						<h2>SSL <b>Everywhere</b></h2>
+						<a href="https://letsencrypt.org/">Let's Encrypt</a>
+					</section>
+					<section>
+						<h2>Service Registry</h2>
+						<ul>
+							<li class="fragment">Can be replaced by an ambassor</li>
+						</ul>
+					</section>
+					<section>
+						<h2>AWS</h2>
+						<ul>
+							<li class="fragment">Pre-Baked Model</li>
+							<li class="fragment">Pull Model - Launch Configuration</li>
+							<li class="fragment">Autoscaling Groups</li>
+							<li class="fragment">IAM Roles</li>
+							<li class="fragment">Security Groups</li>
+							<li class="fragment">VPC</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Controle suas dependências externas</h2>
+						<ul>
+							<li class="fragment">Dependências restrita devem falhar o startup da aplicação</li>
+							<li class="fragment">Smoke Tests</li>
+						</ul>
+					</section>
+					<section>
+						<h2>ServerSpec</h2>
+						<pre>
+							<code data-trim>
+require 'spec_helper'
+
+describe package('httpd'), :if => os[:family] == 'redhat' do
+  it { should be_installed }
+end
+
+describe package('apache2'), :if => os[:family] == 'ubuntu' do
+  it { should be_installed }
+end
+
+describe service('httpd'), :if => os[:family] == 'redhat' do
+  it { should be_enabled }
+  it { should be_running }
+end
+
+describe service('apache2'), :if => os[:family] == 'ubuntu' do
+  it { should be_enabled }
+  it { should be_running }
+end
+
+describe service('org.apache.httpd'), :if => os[:family] == 'darwin' do
+  it { should be_enabled }
+  it { should be_running }
+end
+
+describe port(80) do
+  it { should be_listening }
+end
+							</code>
+						</pre>
+						<p class="fragment">rake spec filename.rb</p>
+					</section>
+					<section>
+						<h2>Containers</h2>
+						<ul>
+							<li class="fragment">-net=host</li>
+							<li class="fragment">docker export | docker import</li>
+							<li class="fragment">docker exec</li>
+							<li class="fragment">--log-driver=syslog</li>
+							<li class="fragment">.dockerignore</li>
+							<li class="fragment">npm prune --production</li>
+							<li class="fragment">Não faça apt-get upgrade ou yum update</li>
+							<li class="fragment">Utilize suas própias imagens base</li>
+							<li class="fragment">Você pode montar o volume em várias localizações</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h2></h2>
+				</section>
+				<section>
+					<h2>Unikernels</h2>
+				</section>
+				<section>
+					<h2>Dúvidas?</h2>
+				</section>
+				<section data-background="https://media.giphy.com/media/tLql6mMHC6wvK/giphy.gif"></section>
 			</div>
 		</div>
 
@@ -47,6 +599,8 @@
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				history: true,
+				controls: true,
+				progress: true,
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
